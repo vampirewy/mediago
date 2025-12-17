@@ -1,0 +1,32 @@
+import { Event } from "electron";
+import MainWindow from "./windows/MainWindow.ts";
+import WebviewService from "./services/WebviewService.ts";
+import VideoRepository from "./repository/VideoRepository.ts";
+import ElectronDevtools from "./vendor/ElectronDevtools.ts";
+import ElectronStore from "./vendor/ElectronStore.ts";
+import ElectronUpdater from "./vendor/ElectronUpdater.ts";
+import TypeORM from "./vendor/TypeORM.ts";
+import ProtocolService from "./core/protocol.ts";
+import IpcHandlerService from "./core/ipc.ts";
+import { VideoService } from "./services/VideoService.ts";
+export default class ElectronApp {
+    private readonly mainWindow;
+    private readonly protocol;
+    private readonly updater;
+    private readonly ipc;
+    private readonly db;
+    private readonly webview;
+    private readonly videoRepository;
+    private readonly devTools;
+    private readonly store;
+    private readonly videoService;
+    constructor(mainWindow: MainWindow, protocol: ProtocolService, updater: ElectronUpdater, ipc: IpcHandlerService, db: TypeORM, webview: WebviewService, videoRepository: VideoRepository, devTools: ElectronDevtools, store: ElectronStore, videoService: VideoService);
+    private serviceInit;
+    private vendorInit;
+    init(): Promise<void>;
+    initAppTheme(): void;
+    initLanguage(): void;
+    initTray(): void;
+    resetDownloadStatus(): Promise<void>;
+    secondInstance: (event: Event, commandLine: string[]) => void;
+}
